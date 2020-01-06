@@ -1,6 +1,4 @@
-/*
-This is a C++ implementation of the Rabin Karp Algorithm
-*/
+//This is a C++ implementation of the Rabin Klark Algorithm
 
 #include <bits/stdc++.h> 
 using namespace std; 
@@ -13,7 +11,7 @@ using namespace std;
   q -> A prime number  
 */
 
-void search(char pat[], char txt[], int q)  
+void search(char pattern[], char text[], int q)  
 {  
   int M = strlen(pattern);
   int N = strlen(text);
@@ -41,23 +39,22 @@ void search(char pat[], char txt[], int q)
     
     {
       if (txt[i+j] != pat[j])
-        break
+        break;
     }
     
     if (j == M) // if p == t and pattern [0...M-1] = text[i, i+1, ...i+M-1]
       cout<<"Pattern found at index "<< i<<endl;
   }
     
-    // Calculates the hash value for the next window of text & removes the leading digit & adds a trailing digit
+    //calculates the hash value for the next window of text & removes the leading digit & adds a trailing digit
     if ( i < N-M )
     {
-      t = (d*(t - txt[i]*h) + txt[i+M])%q; //made a mistake by producing a negative t value converting it to positive
+      t = (d*(t - text[i]*h) + text[i+M])%q; //made a mistake by producing a negative t value converting it to positive
       if (t < 0)
         t = (t + q);
     }
   }
 }
-
 
 //test drive
 int main()
